@@ -580,6 +580,10 @@ video {
   width: 4rem;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .items-center {
   align-items: center;
 }
