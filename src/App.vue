@@ -4,7 +4,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <div class="fixed top-[6.5vh] left-[8vh]">
-    <p class="text-lg underline decoration-double">Auze</p>
+    <RouterLink to="/">
+      <p class="text-lg underline decoration-double">Auze</p>
+    </RouterLink>
   </div>
   <RouterView />
 </template>

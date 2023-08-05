@@ -1,4 +1,29 @@
+<script>
+    import Button from "../components/common/Button.vue";
+    import AddTask from "../components/options/AddTask.vue"; 
+
+    export default {
+        components: {
+            Button,
+            AddTask
+        },
+        data() {
+            return {
+                tasks: [],
+            }
+        },
+    }
+</script>
 
 <template>
-    <p>Options</p>
+    <section class="w-screen min-h-screen flex items-center justify-center">
+        <div v-if="tasks.length === 0" class="relative -top-[5vh] flex flex-col items-center gap-5 w-[35%] text-center">
+            <img class="w-[230px] h-[230px]" src="https://res.cloudinary.com/olamileke/image/upload/v1691254278/auze/absurd.design_-_Chapter_1_-_33_vc6qn4.png" />
+            <p class=" text-lg">There are no tasks to display. Click the button below to create one.</p>
+            <Button>Create Task</Button>
+        </div>
+        <div v-else>olamileke</div>
+
+        <AddTask />
+    </section>
 </template>
