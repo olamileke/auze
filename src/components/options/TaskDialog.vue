@@ -23,7 +23,7 @@ export default {
 
 <template>
   <Modal :isOpen="isVisible">
-    <div class="w-[35vw] max-w-[650px] bg-white p-6 rounded-[2px]">
+    <div class="w-[35vw] max-w-[650px] bg-white p-6 rounded-[3px] bg-brand-100/20">
       <Form :controls="controls" title="Add New Task" />
     </div>
   </Modal>
