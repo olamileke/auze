@@ -7,13 +7,24 @@ export default {
     Form,
     Modal
   },
-  props: ['isVisible']
+  props: ['isVisible'],
+  data() {
+    return {
+      controls: [
+        { label: 'Name', type: 'text' },
+        { label: 'Category', type: 'select', options: ['Advertising', 'Marketing', 'Sales'] },
+        { label: 'Description', type: 'textarea' }
+      ]
+    }
+  }
 }
 </script>
 
 
 <template>
   <Modal :isOpen="isVisible">
-    <div class="w-[30vw] max-w-[450px] bg-white p-5 fix"></div>
+    <div class="w-[35vw] max-w-[650px] bg-white p-6 rounded-[2px]">
+      <Form :controls="controls" title="Add New Task" />
+    </div>
   </Modal>
 </template>

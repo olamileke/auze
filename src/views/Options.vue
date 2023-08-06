@@ -39,6 +39,6 @@ export default {
     <div v-else>olamileke</div>
 
     <AddTask />
-    <TaskDialog :isVisible="showTaskDialog" @click="toggleTaskDialog" />
+    <TaskDialog :isVisible="showTaskDialog" @click.self="toggleTaskDialog" />
   </section>
 </template>

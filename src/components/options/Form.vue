@@ -14,9 +14,8 @@ export default {
 
 <template>
   <form>
-    <p>{{ title }}</p>
-    <Button>
-      <slot name="buttonText"></slot>
-    </Button>
+    <p class="mb-3 underline decoration-double">{{ title }}</p>
+    <FormElement v-for="(control, index) in controls" :key="index" v-bind="control" />
+    <Button class="w-full mt-2"> Add Task </Button>
   </form>
 </template>
