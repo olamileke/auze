@@ -2,6 +2,12 @@
 export default {
   props: ['label', 'type', 'modelValue'],
   emits: ['update:modelValue'],
+  data() {
+    return {
+      elementClasses:
+        'w-full border border-[rgba(0,0,0,0.1)] py-[10px] px-3 rounded m-[2px] focus:m-0 focus:border-[3px] focus:border-[#D2D7E5] outline-none bg-brand-100/[.05]'
+    }
+  },
   computed: {
     value: {
       get() {
@@ -25,16 +31,17 @@ export default {
       v-model="value"
       v-if="type === 'text'"
       type="text"
-      class="w-full border border-[rgba(0,0,0,0.16)] py-2 px-3 rounded focus:border-[rgba(0,0,0,0.7)] outline-none"
-      placeholder="Task 1..."
+      :class="elementClasses"
+      v-bind="$attrs?.properties ?? {}"
     />
     <select
       v-model="value"
       v-if="type === 'select'"
-      class="w-full border border-[rgba(0,0,0,0.16)] py-2 px-3 rounded focus:border-[rgba(0,0,0,0.7)] outline-none"
-      placeholder="sslsk"
+      v-bind="$attrs?.properties ?? {}"
+      class="select-none"
+      :class="elementClasses"
     >
-      <option disabled value="">Please select one</option>
+      <option value="" selected disabled>Please select one</option>
       <option v-for="(option, index) in $attrs?.options ?? []" :key="index" :value="option">
         {{ option }}
       </option>
@@ -42,9 +49,10 @@ export default {
     <textarea
       v-model="value"
       v-if="type === 'textarea'"
-      class="w-full border border-[rgba(0,0,0,0.16)] py-2 px-3 rounded focus:border-[rgba(0,0,0,0.7)] outline-none"
+      class="resize-none"
+      :class="elementClasses"
+      v-bind="$attrs?.properties ?? {}"
       rows="4"
-      placeholder="Here is my task description..."
     />
     <div v-else />
   </div>

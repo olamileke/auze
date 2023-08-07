@@ -1,4 +1,5 @@
 <script>
+import { computed } from 'vue'
 import AddTask from '../components/options/AddTask.vue'
 import Button from '../components/common/Button.vue'
 import TaskDialog from '../components/options/TaskDialog.vue'
@@ -18,6 +19,15 @@ export default {
   methods: {
     toggleTaskDialog() {
       this.showTaskDialog = !this.showTaskDialog
+    },
+    addTask(task) {
+      this.tasks = [...this.tasks, task]
+    }
+  },
+  provide() {
+    return {
+      tasks: computed(() => this.tasks),
+      addTask: this.addTask
     }
   }
 }
