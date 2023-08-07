@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       tasks: [],
-      showTaskDialog: true
+      showTaskDialog: false
     }
   },
   methods: {
@@ -21,7 +21,7 @@ export default {
       this.showTaskDialog = !this.showTaskDialog
     },
     addTask(task) {
-      this.tasks = [...this.tasks, task]
+      this.tasks = [...this.tasks, { ...task, id: Math.random() * 1000000 }]
     }
   },
   provide() {
@@ -48,7 +48,7 @@ export default {
     </div>
     <div v-else>olamileke</div>
 
-    <AddTask />
+    <AddTask @click="showTaskDialog = true" />
     <TaskDialog :isVisible="showTaskDialog" @click.self="toggleTaskDialog" />
   </section>
 </template>

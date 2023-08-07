@@ -19,7 +19,7 @@ module.exports = {
       }
     },
     fontFamily: {
-      'klee-one': ['Klee One', 'cursive'],
+      'laila': ['Laila', 'sans-serif'],
     },
     extend: {},
   },

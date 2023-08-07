@@ -24,7 +24,7 @@ export default {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <p class="mb-3 underline decoration-double">{{ title }}</p>
+    <p class="mb-3 font-semibold">{{ title }}</p>
     <FormElement
       v-for="(control, index) in controls"
       :key="index"
