@@ -16,6 +16,7 @@ export default {
     return {
       tasks: [
         {
+          id: Math.random() * 1000000,
           name: 'Build Medusa Backend',
           category: 'Advertising',
           description:
@@ -23,10 +24,26 @@ export default {
           is_completed: false
         },
         {
+          id: Math.random() * 1000000,
           name: 'Write Tests for Nicodemus',
           category: 'Marketing',
           description: 'We need tests written for Nicodemus, the test coverage should reach 90%',
           is_completed: true
+        },
+        {
+          id: Math.random() * 1000000,
+          name: 'Document Artemis',
+          category: 'Sales',
+          description:
+            'Proper documentation is needed for Artemis. Everyone needs to know what to do in Artemis.',
+          is_completed: true
+        },
+        {
+          id: Math.random() * 1000000,
+          name: 'Implement App Gateway',
+          category: 'Marketing',
+          description: 'A gateway is needed to link all the different services.',
+          is_completed: false
         }
       ],
       showTaskDialog: false,
@@ -39,9 +56,10 @@ export default {
       this.showTaskDialog = !this.showTaskDialog
     },
     addTask(task) {
-      this.tasks = [...this.tasks, { ...task, id: Math.random() * 1000000, is_completed: false }]
+      this.tasks = [{ ...task, id: Math.random() * 1000000, is_completed: false }, ...this.tasks]
       this.showTaskDialog = false
-    }
+    },
+    updateTask(id) {}
   },
   computed: {
     isTasks() {
