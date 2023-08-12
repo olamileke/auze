@@ -22,6 +22,6 @@ export default {
 
 <template>
   <div>
-    <Task v-for="(task, index) in displayedTasks" :key="index" v-bind="task" />
+    <Task v-for="task in displayedTasks" :key="task.id" v-bind="task" />
   </div>
 </template>

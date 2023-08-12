@@ -5,9 +5,18 @@ import FormElement from './FormElement.vue'
 export default {
   props: ['title', 'controls', 'formKey'],
   emits: ['handleSubmit'],
+  inject: ['tasks', 'activeTaskId'],
   data() {
     return {
-      form: this.controls.reduce((o, control) => ({ ...o, [control.label.toLowerCase()]: '' }), {})
+      form: this.controls.reduce(
+        (o, control) => ({
+          ...o,
+          [control.label.toLowerCase()]: !this.activeTaskId
+            ? ''
+            : this.tasks.find((task) => task.id === this.activeTaskId)[control.label.toLowerCase()]
+        }),
+        {}
+      )
     }
   },
   methods: {
@@ -32,7 +41,9 @@ export default {
       v-model="form[control.label.toLowerCase()]"
     />
     <Button class="w-full mt-2" type="submit">
-      {{ form[formKey] ? `Add ${form[formKey]}` : 'Add Task' }}
+      {{
+        `${activeTaskId ? 'Update ' : 'Add '} ${form[formKey].length > 0 ? form[formKey] : 'Task'}`
+      }}
     </Button>
   </form>
 </template>

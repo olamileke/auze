@@ -46,6 +46,7 @@ export default {
           is_completed: false
         }
       ],
+      activeTaskId: null,
       showTaskDialog: false,
       tabs: ['All', 'Completed', 'Incomplete'],
       activeTab: 'all'
@@ -53,13 +54,23 @@ export default {
   },
   methods: {
     toggleTaskDialog() {
+      if (this.showTaskDialog) this.activeTaskId = null
       this.showTaskDialog = !this.showTaskDialog
     },
-    addTask(task) {
-      this.tasks = [{ ...task, id: Math.random() * 1000000, is_completed: false }, ...this.tasks]
+    editTask(task, id = null) {
+      if (this.activeTaskId || id) {
+        const index = this.tasks.findIndex((task) => task.id === (this.activeTaskId ?? id))
+        this.tasks[index] = { ...this.tasks[index], ...task }
+      } else {
+        this.tasks = [{ ...task, id: Math.random() * 1000000, is_completed: false }, ...this.tasks]
+      }
       this.showTaskDialog = false
+      this.activeTaskId = null
     },
-    updateTask(id) {}
+    setActiveTaskId(id) {
+      this.activeTaskId = id
+      this.showTaskDialog = true
+    }
   },
   computed: {
     isTasks() {
@@ -69,7 +80,9 @@ export default {
   provide() {
     return {
       tasks: computed(() => this.tasks),
-      addTask: this.addTask
+      activeTaskId: computed(() => this.activeTaskId),
+      editTask: this.editTask,
+      setActiveTaskId: this.setActiveTaskId
     }
   }
 }
@@ -92,7 +105,7 @@ export default {
       <Button @click="showTaskDialog = true">Create Task</Button>
     </div>
 
-    <div v-else class="mt-[8vh] max-w-[640px] w-full">
+    <div v-else class="mt-[7vh] max-w-[640px] w-full">
       <div class="flex gap-3 justify-center mb-5">
         <p
           v-for="(tab, index) in tabs"
