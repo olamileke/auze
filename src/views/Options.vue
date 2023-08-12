@@ -70,6 +70,13 @@ export default {
     setActiveTaskId(id) {
       this.activeTaskId = id
       this.showTaskDialog = true
+    },
+    getTabCount(tab) {
+      if (tab === 'completed') return this.tasks.filter((task) => task?.is_completed).length
+
+      if (tab === 'incomplete') return this.tasks.filter((task) => !task?.is_completed).length
+
+      return this.tasks.length
     }
   },
   computed: {
@@ -104,8 +111,8 @@ export default {
       <Button @click="showTaskDialog = true">Create Task</Button>
     </div>
 
-    <div v-else class="mt-[7vh] max-w-[640px] w-full">
-      <div class="flex gap-3 justify-center mb-5">
+    <div v-else class="mt-[10vh] sm:mt-[4.4vh] lg:mt-[7vh] px-5 sm:px-0 sm:max-w-[640px] w-full">
+      <div class="flex gap-3 justify-center mb-8 sm:mb-10 lg:mb-5">
         <p
           v-for="(tab, index) in tabs"
           :key="index"
@@ -115,7 +122,7 @@ export default {
           ]"
           @click="activeTab = tab.toLowerCase()"
         >
-          {{ tab }}
+          {{ tab }} ({{ getTabCount(tab.toLowerCase()) }})
         </p>
       </div>
       <Tasks :type="activeTab" />

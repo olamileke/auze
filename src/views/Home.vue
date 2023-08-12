@@ -6,7 +6,7 @@ const apis = ['Options', 'Composition']
 
 <template>
   <section class="w-screen min-h-screen flex justify-center items-center">
-    <div class="flex gap-4 relative -top-[8vh]">
+    <div class="flex flex-col sm:flex-row gap-4 relative -top-[3vh] sm:-top-[8vh]">
       <RouterLink v-for="(api, index) in apis" :key="index" :to="'/' + api.toLowerCase()">
         <div class="p-5 flex border-2 border-black hover:border-2 rounded-sm cursor-pointer">
           <div

@@ -37,7 +37,9 @@ export default {
 
 <template>
   <Modal :isOpen="isVisible">
-    <div class="w-[35vw] max-w-[650px] bg-white p-6 rounded-[3px] bg-brand-100/20">
+    <div
+      class="w-[95vw] sm:w-[75vw] lg:w-[35vw] sm:max-w-[650px] bg-white p-6 rounded-[3px] bg-brand-100/20"
+    >
       <Form
         :controls="controls"
         :title="activeTaskId ? 'Update Task' : 'Add New Task'"
