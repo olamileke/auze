@@ -93,15 +93,14 @@ export default {
     class="w-screen min-h-screen flex justify-center"
     :class="[!isTasks ? 'items-center' : '']"
   >
-    <div
-      v-if="!isTasks"
-      class="relative -top-[5vh] flex flex-col items-center gap-5 w-[35%] text-center"
-    >
+    <div v-if="!isTasks" class="relative -top-[5vh] flex flex-col items-center w-[35%] text-center">
       <img
-        class="w-[230px] h-[230px]"
-        src="https://res.cloudinary.com/olamileke/image/upload/v1691254278/auze/absurd.design_-_Chapter_1_-_33_vc6qn4.png"
+        class="w-[150px] h-[150px] mb-7"
+        src="https://res.cloudinary.com/olamileke/image/upload/v1691869117/auze/doobry-task-list_ybh5nu.png"
       />
-      <p class="text-lg">There are no tasks to display. Click the button below to create one.</p>
+      <p class="text-lg mb-4">
+        There are no tasks to display. Click the button below to create one.
+      </p>
       <Button @click="showTaskDialog = true">Create Task</Button>
     </div>
 
