@@ -15,36 +15,36 @@ export default {
   data() {
     return {
       tasks: [
-        {
-          id: Math.random() * 1000000,
-          name: 'Build Medusa Backend',
-          category: 'Advertising',
-          description:
-            'A backend needs to be built for Medusa. It should be written in Node and should be strong, robust and fast',
-          is_completed: false
-        },
-        {
-          id: Math.random() * 1000000,
-          name: 'Write Tests for Nicodemus',
-          category: 'Marketing',
-          description: 'We need tests written for Nicodemus, the test coverage should reach 90%',
-          is_completed: true
-        },
-        {
-          id: Math.random() * 1000000,
-          name: 'Document Artemis',
-          category: 'Sales',
-          description:
-            'Proper documentation is needed for Artemis. Everyone needs to know what to do in Artemis.',
-          is_completed: true
-        },
-        {
-          id: Math.random() * 1000000,
-          name: 'Implement App Gateway',
-          category: 'Marketing',
-          description: 'A gateway is needed to link all the different services.',
-          is_completed: false
-        }
+        // {
+        //   id: Math.random() * 1000000,
+        //   name: 'Build Medusa Backend',
+        //   category: 'Advertising',
+        //   description:
+        //     'A backend needs to be built for Medusa. It should be written in Node and should be strong, robust and fast',
+        //   is_completed: false
+        // },
+        // {
+        //   id: Math.random() * 1000000,
+        //   name: 'Write Tests for Nicodemus',
+        //   category: 'Marketing',
+        //   description: 'We need tests written for Nicodemus, the test coverage should reach 90%',
+        //   is_completed: true
+        // },
+        // {
+        //   id: Math.random() * 1000000,
+        //   name: 'Document Artemis',
+        //   category: 'Sales',
+        //   description:
+        //     'Proper documentation is needed for Artemis. Everyone needs to know what to do in Artemis.',
+        //   is_completed: true
+        // },
+        // {
+        //   id: Math.random() * 1000000,
+        //   name: 'Implement App Gateway',
+        //   category: 'Marketing',
+        //   description: 'A gateway is needed to link all the different services.',
+        //   is_completed: false
+        // }
       ],
       activeTaskId: null,
       showTaskDialog: false,
@@ -100,19 +100,22 @@ export default {
     class="w-screen min-h-screen flex justify-center"
     :class="[!isTasks ? 'items-center' : '']"
   >
-    <div v-if="!isTasks" class="relative -top-[5vh] flex flex-col items-center w-[35%] text-center">
+    <div
+      v-if="!isTasks"
+      class="relative -top-[5vh] flex flex-col items-center w-[90%] sm:w-[80%] lg:w-[35%] text-center"
+    >
       <img
-        class="w-[150px] h-[150px] mb-7"
-        src="https://res.cloudinary.com/olamileke/image/upload/v1691869117/auze/doobry-task-list_ybh5nu.png"
+        class="w-[200px] h-[200px] lg:w-[250px] lg:h-[250px] mb-5 sm:mb-7"
+        src="https://res.cloudinary.com/olamileke/image/upload/v1691949838/auze/bonbon-line-project-management-with-many-hands_qxmnre.png"
       />
-      <p class="text-lg mb-4">
+      <p class="leading-relaxed sm:leading-normal mb-5 lg:mb-6">
         There are no tasks to display. Click the button below to create one.
       </p>
       <Button @click="showTaskDialog = true">Create Task</Button>
     </div>
 
     <div v-else class="mt-[10vh] sm:mt-[4.4vh] lg:mt-[7vh] px-5 sm:px-0 sm:max-w-[640px] w-full">
-      <div class="flex gap-3 justify-center mb-8 sm:mb-10 lg:mb-5">
+      <div class="flex gap-3 justify-center mb-8 sm:mb-10 lg:mb-8">
         <p
           v-for="(tab, index) in tabs"
           :key="index"
