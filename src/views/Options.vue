@@ -105,8 +105,8 @@ export default {
       class="relative -top-[5vh] flex flex-col items-center w-[90%] sm:w-[80%] lg:w-[35%] text-center"
     >
       <img
-        class="w-[200px] h-[200px] lg:w-[250px] lg:h-[250px] mb-5 sm:mb-7"
-        src="https://res.cloudinary.com/olamileke/image/upload/v1691949838/auze/bonbon-line-project-management-with-many-hands_qxmnre.png"
+        class="w-[200px] h-[200px] lg:w-[250px] lg:h-[250px] mb-3"
+        src="https://res.cloudinary.com/olamileke/image/upload/v1692215736/auze/reflecting_bnmr96.png"
       />
       <p class="leading-relaxed sm:leading-normal mb-5 lg:mb-6">
         There are no tasks to display. Click the button below to create one.

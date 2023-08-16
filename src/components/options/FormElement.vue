@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       elementClasses:
-        'w-full border border-[rgba(0,0,0,0.1)] py-[10px] px-3 rounded m-[2px] focus:m-0 focus:border-[3px] focus:border-[#D2D7E5] outline-none bg-brand-100/[.05]'
+        'w-full border border-[rgba(0,0,0,0.1)] py-[10px] px-3 rounded m-[2px] text-sm focus:m-0 focus:border-[3px] focus:border-[#D2D7E5] outline-none bg-brand-100/[.05]'
     }
   },
   computed: {
@@ -25,7 +25,7 @@ export default {
 <template>
   <div class="flex flex-col mb-3">
     <label class="text-sm mb-[6px]"
-      >{{ label }} <span class="relative top-1 text-lg text-[#FF0000]">*</span>
+      >{{ label }} <span class="relative top-2 text-lg text-[#FF0000]">*</span>
     </label>
     <input
       v-model="value"

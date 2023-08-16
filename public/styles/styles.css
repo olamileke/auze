@@ -576,8 +576,8 @@ video {
   top: 0px;
 }
 
-.top-1 {
-  top: 0.25rem;
+.top-2 {
+  top: 0.5rem;
 }
 
 .top-\[4vh\] {
@@ -969,10 +969,6 @@ video {
 
   .sm\:mb-10 {
     margin-bottom: 2.5rem;
-  }
-
-  .sm\:mb-7 {
-    margin-bottom: 1.75rem;
   }
 
   .sm\:mt-\[4\.4vh\] {

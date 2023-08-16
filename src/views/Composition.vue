@@ -4,8 +4,40 @@ import { TTask } from '../types'
 import Button from '../components/common/Button.vue'
 import AddTask from '../components/composition/AddTask.vue'
 import TaskDialog from '../components/composition/TaskDialog.vue'
+import Tasks from '../components/composition/Tasks.vue'
 
-const tasks = ref<TTask[]>([])
+const tasks = ref<TTask[]>([
+  {
+    id: Math.random() * 1000000,
+    name: 'Build Medusa Backend',
+    category: 'Advertising',
+    description:
+      'A backend needs to be built for Medusa. It should be written in Node and should be strong, robust and fast',
+    is_completed: false
+  },
+  {
+    id: Math.random() * 1000000,
+    name: 'Write Tests for Nicodemus',
+    category: 'Marketing',
+    description: 'We need tests written for Nicodemus, the test coverage should reach 90%',
+    is_completed: true
+  },
+  {
+    id: Math.random() * 1000000,
+    name: 'Document Artemis',
+    category: 'Sales',
+    description:
+      'Proper documentation is needed for Artemis. Everyone needs to know what to do in Artemis.',
+    is_completed: true
+  },
+  {
+    id: Math.random() * 1000000,
+    name: 'Implement App Gateway',
+    category: 'Marketing',
+    description: 'A gateway is needed to link all the different services.',
+    is_completed: false
+  }
+])
 const activeTaskId = ref<number | null>(null)
 const tabs = ['All', 'Completed', 'Incomplete']
 const activeTab = ref('all')
@@ -18,11 +50,12 @@ const toggleTaskDialog = () => {
 
 const setActiveTaskId = (newActiveTaskId: number) => {
   activeTaskId.value = newActiveTaskId
+  showTaskDialog.value = true
 }
 
 const editTask = (task: TTask, id: number | null = null) => {
-  if (activeTaskId || id) {
-    const index = tasks.value.findIndex((task) => task.id === (activeTaskId ?? id))
+  if (activeTaskId.value || id) {
+    const index = tasks.value.findIndex((task) => task.id === (activeTaskId.value ?? id))
     tasks.value[index] = { ...tasks.value[index], ...task }
   } else {
     tasks.value = [{ ...task, id: Math.random() * 1000000, is_completed: false }, ...tasks.value]
@@ -32,11 +65,11 @@ const editTask = (task: TTask, id: number | null = null) => {
 }
 
 const getTabCount = (tab: string) => {
-  if (tab.toLowerCase() === 'completed') return tasks.value.filter((task) => task?.is_completed)
+  if (tab === 'completed') return tasks.value.filter((task) => task?.is_completed).length
 
-  if (tab.toLowerCase() === 'incomplete') return tasks.value.filter((task) => !task?.is_completed)
+  if (tab === 'incomplete') return tasks.value.filter((task) => !task?.is_completed).length
 
-  return tasks.value
+  return tasks.value.length
 }
 
 const isTasks = computed(() => tasks.value.length > 0)
@@ -56,13 +89,30 @@ provide('editTask', editTask)
       class="relative -top-[5vh] flex flex-col items-center w-[90%] sm:w-[80%] lg:w-[35%] text-center"
     >
       <img
-        class="w-[200px] h-[200px] lg:w-[250px] lg:h-[250px] mb-5 sm:mb-7"
-        src="https://res.cloudinary.com/olamileke/image/upload/v1691949838/auze/bonbon-line-project-management-with-many-hands_qxmnre.png"
+        class="w-[200px] h-[200px] lg:w-[250px] lg:h-[250px] mb-3"
+        src="https://res.cloudinary.com/olamileke/image/upload/v1692215736/auze/reflecting_bnmr96.png"
       />
       <p class="leading-relaxed sm:leading-normal mb-5 lg:mb-6">
         There are no tasks to display. Click the button below to create one.
       </p>
       <Button @click="showTaskDialog = true">Create Task</Button>
+    </div>
+
+    <div v-else class="mt-[10vh] sm:mt-[4.4vh] lg:mt-[7vh] px-5 sm:px-0 sm:max-w-[640px] w-full">
+      <div class="flex gap-3 justify-center mb-8 sm:mb-10 lg:mb-8">
+        <p
+          v-for="(tab, index) in tabs"
+          :key="index"
+          class="cursor-pointer"
+          :class="[
+            activeTab === tab.toLowerCase() ? 'underline decoration-double underline-offset-2' : ''
+          ]"
+          @click="activeTab = tab.toLowerCase()"
+        >
+          {{ tab }} ({{ getTabCount(tab.toLowerCase()) }})
+        </p>
+      </div>
+      <Tasks :type="activeTab" />
     </div>
 
     <AddTask @click="showTaskDialog = true" />

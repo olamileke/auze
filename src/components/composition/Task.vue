@@ -1,8 +1,16 @@
-<script lang="ts">
-export default {
-  props: ['id', 'name', 'category', 'description', 'is_completed'],
-  inject: ['setActiveTaskId', 'editTask']
-}
+<script setup lang="ts">
+import { inject } from 'vue'
+
+defineProps<{
+  id: number
+  name: string
+  category: string
+  description: string
+  is_completed: boolean
+}>()
+
+const editTask = inject('editTask')
+const { setActiveTaskId }: { setActiveTaskId: (id: number) => void } = inject('activeTaskId')
 </script>
 
 <template>

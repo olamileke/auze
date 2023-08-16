@@ -28,14 +28,14 @@ const onSubmit = () => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <p class="mb-3 font-semibold">{{ title }}</p>
+    <p class="mb-3 font-semibold text-sm">{{ title }}</p>
     <FormElement
       v-for="(control, index) in controls"
       :key="index"
       v-bind="control"
       v-model="form[control.label.toLowerCase()]"
     />
-    <Button class="w-full mt-2" type="submit">
+    <Button class="w-full mt-2 text-sm" type="submit">
       {{
         `${activeTaskId ? 'Update ' : 'Add '} ${form[formKey].length > 0 ? form[formKey] : 'Task'}`
       }}
