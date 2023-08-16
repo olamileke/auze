@@ -6,38 +6,7 @@ import AddTask from '../components/composition/AddTask.vue'
 import TaskDialog from '../components/composition/TaskDialog.vue'
 import Tasks from '../components/composition/Tasks.vue'
 
-const tasks = ref<TTask[]>([
-  {
-    id: Math.random() * 1000000,
-    name: 'Build Medusa Backend',
-    category: 'Advertising',
-    description:
-      'A backend needs to be built for Medusa. It should be written in Node and should be strong, robust and fast',
-    is_completed: false
-  },
-  {
-    id: Math.random() * 1000000,
-    name: 'Write Tests for Nicodemus',
-    category: 'Marketing',
-    description: 'We need tests written for Nicodemus, the test coverage should reach 90%',
-    is_completed: true
-  },
-  {
-    id: Math.random() * 1000000,
-    name: 'Document Artemis',
-    category: 'Sales',
-    description:
-      'Proper documentation is needed for Artemis. Everyone needs to know what to do in Artemis.',
-    is_completed: true
-  },
-  {
-    id: Math.random() * 1000000,
-    name: 'Implement App Gateway',
-    category: 'Marketing',
-    description: 'A gateway is needed to link all the different services.',
-    is_completed: false
-  }
-])
+const tasks = ref<TTask[]>()
 const activeTaskId = ref<number | null>(null)
 const tabs = ['All', 'Completed', 'Incomplete']
 const activeTab = ref('all')
