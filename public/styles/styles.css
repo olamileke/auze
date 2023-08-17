@@ -540,6 +540,10 @@ video {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
 }
@@ -582,6 +586,46 @@ video {
 
 .top-\[4vh\] {
   top: 4vh;
+}
+
+.left-2 {
+  left: 0.5rem;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
+.top-3 {
+  top: 0.75rem;
+}
+
+.top-\[5px\] {
+  top: 5px;
+}
+
+.top-\[12px\] {
+  top: 12px;
+}
+
+.top-\[14px\] {
+  top: 14px;
+}
+
+.right-3 {
+  right: 0.75rem;
+}
+
+.top-\[16px\] {
+  top: 16px;
+}
+
+.top-\[17px\] {
+  top: 17px;
 }
 
 .-z-\[999\] {
@@ -656,6 +700,22 @@ video {
   height: 100vh;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
+.h-\[18px\] {
+  height: 18px;
+}
+
+.h-\[17px\] {
+  height: 17px;
+}
+
+.h-\[16px\] {
+  height: 16px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -686,6 +746,22 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-\[18px\] {
+  width: 18px;
+}
+
+.w-\[17px\] {
+  width: 17px;
+}
+
+.w-\[16px\] {
+  width: 16px;
 }
 
 .cursor-pointer {

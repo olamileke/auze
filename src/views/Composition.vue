@@ -6,7 +6,7 @@ import AddTask from '../components/composition/AddTask.vue'
 import TaskDialog from '../components/composition/TaskDialog.vue'
 import Tasks from '../components/composition/Tasks.vue'
 
-const tasks = ref<TTask[]>()
+const tasks = ref<TTask[]>([])
 const activeTaskId = ref<number | null>(null)
 const tabs = ['All', 'Completed', 'Incomplete']
 const activeTab = ref('all')

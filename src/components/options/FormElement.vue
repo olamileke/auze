@@ -1,5 +1,10 @@
 <script lang="ts">
+import { ChevronDownIcon } from '@heroicons/vue/24/solid'
+
 export default {
+  components: {
+    ChevronDownIcon
+  },
   props: ['label', 'type', 'modelValue'],
   emits: ['update:modelValue'],
   data() {
@@ -34,18 +39,20 @@ export default {
       :class="elementClasses"
       v-bind="$attrs?.properties ?? {}"
     />
-    <select
-      v-model="value"
-      v-if="type === 'select'"
-      v-bind="$attrs?.properties ?? {}"
-      class="select-none"
-      :class="elementClasses"
-    >
-      <option value="" selected disabled>Please select one</option>
-      <option v-for="(option, index) in $attrs?.options ?? []" :key="index" :value="option">
-        {{ option }}
-      </option>
-    </select>
+    <div v-if="type === 'select'" class="relative">
+      <select
+        v-model="value"
+        v-bind="$attrs?.properties ?? {}"
+        class="select-none"
+        :class="elementClasses"
+      >
+        <option value="" selected disabled>Please select one</option>
+        <option v-for="(option, index) in $attrs?.options ?? []" :key="index" :value="option">
+          {{ option }}
+        </option>
+      </select>
+      <ChevronDownIcon class="w-[16px] h-[16px] absolute top-[16px] right-3" />
+    </div>
     <textarea
       v-model="value"
       v-if="type === 'textarea'"
